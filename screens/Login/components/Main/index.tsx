@@ -20,19 +20,20 @@ export default function Main (props) {
             <TextInput secureTextEntry placeholder="Senha" style={styles.caixa}
             value={senha} 
             onChangeText={(value)=> setSenha(value)}/>
-            
-            <TouchableOpacity onPress={() => {
-                efetuarLogin(usuario,senha);
-            }} 
-            style={styles.btntllogin}>
-                <SimpleLineIcons name="login" size={24} color="green" />
-                <Text>Login</Text>
-            </TouchableOpacity>
+            <View style={styles.viewbtn}>
+            	<TouchableOpacity onPress={() => {
+                	efetuarLogin(usuario,senha);
+            	}} 
+            	style={styles.btntllogin}>
+                	<SimpleLineIcons name="login" size={24} color="green" />
+                	<Text>Login</Text>
+            	</TouchableOpacity>
 
-            <TouchableOpacity onPress={() => props.acao.navigate("Cadastro")} style={styles.btntlcadastrar}>
-            <AntDesign name="adduser" size={24} color="green" />
-                <Text>Cadastro</Text>
-            </TouchableOpacity>
+            	<TouchableOpacity onPress={() => props.acao.navigate("Cadastro")} style={styles.btntlcadastrar}>
+            	<AntDesign name="adduser" size={24} color="green" />
+                	<Text>Cadastro</Text>
+            	</TouchableOpacity>
+			</View>
         </View>
     )
 }

@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     width: 150,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+	borderRadius: 10
   },
 });

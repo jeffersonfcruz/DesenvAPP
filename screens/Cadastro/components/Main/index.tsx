@@ -26,7 +26,7 @@ export default function Main() {
                     <Entypo name="save" size={24} color="green"/>
                     <Text> Cadastrar </Text>
                 </TouchableOpacity>
-        </View>
+        	</View>
         </ScrollView>
     )
 }
