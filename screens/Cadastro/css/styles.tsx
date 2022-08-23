@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "black",
   },
   titulo: {
     fontSize: 20,
@@ -17,6 +18,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor: "silver",
     borderWidth: 1,
+    borderRadius: 5,
   },
   btntccadastrar: {
     flexDirection: "row",
@@ -27,6 +29,6 @@ export const styles = StyleSheet.create({
     width: 150,
     marginLeft: "auto",
     marginRight: "auto",
-	borderRadius: 10
+	  borderRadius: 10
   },
 });
