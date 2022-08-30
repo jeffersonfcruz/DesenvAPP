@@ -22,7 +22,8 @@ export default function Main (props) {
             onChangeText={(value)=> setSenha(value)}/>
             <View style={styles.viewbtn}>
             	<TouchableOpacity onPress={() => {
-                	efetuarLogin(usuario,senha);
+                	//efetuarLogin(usuario,senha);
+                    props.acao.navigate("Home")
             	}} 
             	style={styles.btntllogin}>
                 	<SimpleLineIcons name="login" size={24} color="green" />
