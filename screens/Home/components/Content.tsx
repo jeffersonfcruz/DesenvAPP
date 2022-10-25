@@ -35,7 +35,7 @@ export default function Content(props:any) {
             <TouchableOpacity onPress={()=>props.tela.navigate("Detalhes",{idproduto:itens.idproduto})}>
               <Image
               source={{ uri: itens.foto1 }}
-              style={{ width: 50, height: 50, resizeMode: "cover" }}/>
+              style={{ width: 100, height: 100, resizeMode: "cover" }}/>
             <Text>{itens.nomeproduto}</Text>
             <Text>{itens.preco}</Text>
             </TouchableOpacity>

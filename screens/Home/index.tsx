@@ -2,6 +2,7 @@ import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { ScrollView, View } from "react-native";
+import Carrinho from "../Carrinho";
 import Detalhes from "../Detalhes";
 import Content from "./components/Content";
 import Header from "./components/Header";
@@ -15,15 +16,16 @@ export default function Home() {
       <Stack.Navigator>
         <Stack.Screen name = "Inicio" component={Inicio} options={{headerShown:false}}/>
         <Stack.Screen name = "Detalhes" component={Detalhes}/>
+        <Stack.Screen name= "Carrinho" component={Carrinho}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
   function Inicio({ navigation }) {
     return (
-    <View style={{flex:1}}>
+    <View>
       <ScrollView>
-        <Header />
+        <Header tela = {navigation}/>
         <Panel />
         <Content tela = {navigation}/>
       </ScrollView>
