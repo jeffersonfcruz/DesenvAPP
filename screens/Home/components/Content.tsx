@@ -37,7 +37,7 @@ export default function Content(props:any) {
               source={{ uri: itens.foto1 }}
               style={{ width: 100, height: 100, resizeMode: "cover" }}/>
             <Text>{itens.nomeproduto}</Text>
-            <Text>{itens.preco}</Text>
+            <Text>R$ {itens.preco}</Text>
             </TouchableOpacity>
           </View>
         ))

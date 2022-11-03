@@ -1,8 +1,12 @@
 import { TextInput, TouchableOpacity, View, Text, Alert } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { styles } from "../../css/Styles";
+import { styles } from "../../css/styles";
 import { useState } from "react";
 import { ipnode } from "../../../../config/ip";
+
+import * as SQLite from "expo-sqlite";
+
+const db = SQLite.openDatabase("mystore.banco");
 
 export default function Main(props: any) {
   const [usuario, setUsuario] = useState("");
@@ -27,7 +31,7 @@ export default function Main(props: any) {
 
       <TouchableOpacity
         onPress={() => {
-          // efetuarLogin(usuario, senha);
+          efetuarLogin(usuario, senha);
           props.acao.navigate("Home");
         }}
         style={styles.btntllogin}
@@ -52,7 +56,7 @@ function efetuarLogin(usuario: any, senha: any) {
     return Alert.alert("Erro", "Você deve preecher todos os campos");
   }
 
-  fetch (`${ipnode}/api/usuarios/login`, {
+  fetch(`${ipnode}/api/usuarios/login`, {
     method: "POST",
     headers: {
       accept: "application/json",
@@ -64,6 +68,35 @@ function efetuarLogin(usuario: any, senha: any) {
     }),
   })
     .then((response) => response.json())
-    .then((rs) => console.log(rs))
+    .then((rs) => {
+      console.log(rs);
+      gravarusuario(rs.payload[0].idusuario, rs.output, rs.token);
+    })
+
     .catch((err) => console.error(`Erro -> ${err}`));
+}
+function gravarusuario(idusuario: any, situacao: any, token: any) {
+  db.transaction((ts) => {
+    ts.executeSql(
+      `create table if not exists dados (
+         id integer primary key,
+         idusuario int,
+         situacao text,
+         token text,
+       )`
+    );
+  });
+  db.transaction((tx) => {
+    tx.executeSql(
+      `insert into dados (
+        idusuario,
+        situacao,
+        token
+        ) values (?,?,?)`,
+      [idusuario, situacao, token]
+    );
+    tx.executeSql(`select * from dados`, [], (_, { rows }) => {
+      console.log(rows);
+    });
+  });
 }

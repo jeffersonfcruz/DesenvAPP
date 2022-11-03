@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { styles } from "./css/Styles";
+import { styles } from "./css/styles";
 
 export default function Login({ navigation }) {
     return (
